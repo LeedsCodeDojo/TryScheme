@@ -1,0 +1,17 @@
+; Scheme Language Demo
+
+; Atoms & Lists
+
+; Atoms - data types
+
+; Lists - data vs function applications
+
+; Parentheses
+
+; Lists - recursion, car & cdr.  (car & cdr don't work on empty lists).
+
+; Conditionals - Conf & If
+
+; Recursion
+
+; Dynamic typing
