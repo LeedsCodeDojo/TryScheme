@@ -24,6 +24,7 @@ Scheme Quick Reference
 
 (+ 1 2 3) ==> 6
 (string-append "hi " "mum") ==> "hi mum"
+((if (> 1 2) + -) 4 3) ==> 1 ; as long as the first element evaluates to a function, you're good
 
 ### Comparison Functions
 
@@ -35,94 +36,62 @@ Scheme Quick Reference
 
 ### List Functions
 
-’(a b) ==> '(a b) ; quote suspends evaluation of the list
-(car ’(a b)) ==> a ; get head of list (contents of address reg)
-(cdr ’(a b)) ==> '(b) ; get rest of list (contents of decrement reg)
-(cons "one" '(2 3)) ==> ("one" 2 3) ; put element on head of list
-(length ’(a b c)) ==> 3 ; what is the length of a list?
-(append ’(a b) ’(y z)) ==> '(a b y z) ; append one list to another
-(reverse ’(a b c)) ==> '(c b a) ; reverse a list
-(null? ’()) ==> #t ; is the list empty?
+’(a b)                   ==> '(a b) ; quote suspends evaluation of the list
+(car ’(a b))             ==> a ; get head of list (contents of address reg)
+(cdr ’(a b))             ==> '(b) ; get rest of list (contents of decrement reg)
+(cons "one" '(2 3))      ==> ("one" 2 3) ; put element on head of list
+(append ’(a b) ’(y z))   ==> '(a b y z) ; append one list to another
+(null? ’())              ==> #t ; is the list empty?
+
+; you will find other functions as expected - length, reverse, etc.
+
+### Naming Conventions
+
+General names: lisp-case, e.g. child-node
+Predicate functions: with question mark, e.g. even?
+Mutator functions: with exclamation mark, e.g. set!
 
 ### Defining Variables & Functions
 
 (define x 10)
-x ==> 10
-(set! x 20) ; you can change a variable once set, but it's not an idiomatic thing to do
+x                          ==> 10
+
+; you *can* change a variable once set, but it's not realy the Scheme way
+(set! x 20) 
+x                          ==> 20
 
 ;; Lambda is used to generate new functions
 (lambda (x) (+ x 10)                    ; an anonymous function
 (define plus10 (lambda (x) (+ x 10)))   ; we've named the function now
+(define (plus10 x) (+ x 10))            ; a shortcut to defining a named function
+(plus10 5) ==> 15
 
-
-;; Cond is a general conditional
+;; Cond is a general conditional - returns the value associated with the first true expression, or the 'else' clause
 (cond 
   ((eq? 'foo 'bar) 'hello)
   ((= 10 20) 'goodbye)
-  (#t 'sorry))                  => sorry
+  (else 'sorry))            ==> sorry
 
-;; Let is used to declare/use temporary variables
+;; Let is used to declare/use temporary variables within the scope of the let statement
 (let
   ((x 10)
    (y 20))
-  (+ x y))
+  (+ x y))                  ==> 30
   
-### Built-in types and functions
-
-;; arithmetic:  +, -, *, / 
-;; relational: <, <=, >, >=, =
-(+ 1 2)                    => 3       
-(= 1 2)                    => #f   ; use = for numbers
-
-;; Equality and identity:  eq? and equal?
-(eq? 'hello 'goodbye)      => #f   ; eq? is an identity test
-(eq? 'hello 'hello)        => #t   ; two values are eq if they are the same
-(eq? '(1 2) '(1 2))        => #f   ; object...
-(define foo '(1 2))      
-(define foo bar)
-(eq? foo bar)              => #t
-(equal? foo bar)           => #t   ; two values are equal if they look the same
-(equal? foo '(1 2))        => #t
-
-;; Lists:  cons, car, and cdr
-;; Making new lists, via quoting, cons, or list
-(define foo '(1 2 3))     
-(define bar (cons 1 (cons 2 (cons 3 ()))))
-(define baz (list 1 2 3))
-
-;; Process lists with car, cdr, and null?
-(null? '(1 2))             => #f
-(null? ())                 => #t
-(car '(1 2))               => 1
-(cdr '(1 2))               => (2)
-
 ### Recursion
 
-;; Exponentiation function x^n
-(define expt 
-  (lambda (x n)
-    (cond ((= n 0) 1)
-	  (#t (* x (expt x (- n 1)))))))
-
 ;; List length
-(define length
-  (lambda (a-list)
+(define (length a-list)
     (cond ((null? a-list) 0)
-	  (#t (+ 1 (length (cdr a-list)))))))
+	  (else (+ 1 (length (cdr a-list))))))
+	  
+(length '(a b c))            ==> 3
 
 ### Higher order functions
 
-;; takes two functions and an argument, returns (f (g x))
-(define compose 
-  (lambda (f g x)
-    (f (g x))))
-
-(compose even? (lambda (x) (- x 1)) 10)   => #f
-
 ;; takes a function and applies it to every element of a list
-(define map 
-  (lambda (f a-list)
-    (cond ((null? a-list) a-list)
-	  (#t (cons (f (car a-list)) (map f (cdr a-list)))))))
+(define (map function a-list)
+    (cond ((null? a-list) '())
+	  (else (cons (function (car a-list)) (map function (cdr a-list))))))
 
-(map even? '(1 2 3 4))        => (#f #t #f #t)
+(map even? '(1 2 3 4))        ==> (#f #t #f #t)
