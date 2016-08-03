@@ -32,7 +32,6 @@ Scheme Quick Reference
     (eqv? "abs" "abs") ==> #t ; are all the operands equal?
     (< 2 3)            ==> #t ; less than (also >, <=, >=, etc.)
     (or #f #t)         ==> #t ; or (also not, and, etc.)
-    (integer? 2)       ==> #t ; are all the operands integers?
 
 ### List Functions
 
@@ -58,7 +57,6 @@ Mutator functions: with exclamation mark, e.g. set!
 
     ; you *can* change a variable once set, but it's not really the Scheme way
     (set! x 20) 
-    x                          ==> 20
 
     ;; Lambda is used to generate new functions
     (lambda (x) (+ x 10)                    ; an anonymous function
