@@ -1,7 +1,7 @@
 Scheme - A Gentle Introduciton
 ==============================
 
-This set of exercises aims to guide you through the basics of coding in Scheme.  If you already know parts or are finding it easy, feel free to skip ahead.
+This set of exercises aims to guide you through the basics of coding in Scheme.  Feel free to skip ahead.
 
 ### 1 Atoms
 
@@ -9,7 +9,7 @@ Atoms are single values that evaluate to themselves - 1, "Hello", etc.
 
 1.1 Evaluate some atoms at the REPL.
 
-1.2 What else works as a atom?  (try text without quotes, different prefixes, different number types - rational, etc.)
+1.2 What else works as a atom?  (try text without quotes, rational numbers, etc.)
 
 ### 2 Lists
 
@@ -29,7 +29,7 @@ Function application takes the form (+ 1 2), with + being a function.
 
 3.2 Is adding limited to two numbers?
 
-3.3 Try the even? function.  Does that support multiple arguments?
+3.3 Try the odd? function.  Does that support multiple arguments?
 
 3.4 Calculate the following with scheme: 2 + 4 * 5 - 3 (which should equal 19).
 
@@ -42,8 +42,6 @@ Using the built-in comparison functions, see if:
 4.1 "hello" equals "mum"
 
 4.2 2 equals 2
-
-4.3 10 is greater than -5
 
 ### 5 Lists
 
@@ -63,11 +61,9 @@ The main functions for working with lists are car, cdr and cons.
 
 ### 6 Variables
 
-Variables can be defined like this: (define x 10)  and changed like this: (set! x 5)
+Variables can be defined like this: (define x 10)
 
 6.1 Define two variables, x and y, and multiply them together.
-
-6.2 Change one, add add them together again.
 
 ### 7 Functions
 
