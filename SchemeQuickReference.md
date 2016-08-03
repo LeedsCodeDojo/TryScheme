@@ -36,12 +36,12 @@ Scheme Quick Reference
 
 ### List Functions
 
-    ’(a b)                   ==> '(a b) ; quote suspends evaluation of the list
-    (car ’(a b))             ==> a ; get head of list (contents of address reg)
-    (cdr ’(a b))             ==> '(b) ; get rest of list (contents of decrement reg)
+    ’(a b)                   ==> '(a b)      ; quote suspends evaluation of the list
+    (car ’(a b))             ==> a           ; get head of list (contents of address reg)
+    (cdr ’(a b))             ==> '(b)        ; get rest of list (contents of decrement reg)
     (cons "one" '(2 3))      ==> ("one" 2 3) ; put element on head of list
-    (append ’(a b) ’(y z))   ==> '(a b y z) ; append one list to another
-    (null? ’())              ==> #t ; is the list empty?
+    (append ’(a b) ’(y z))   ==> '(a b y z)  ; append one list to another
+    (null? ’())              ==> #t          ; is the list empty?
 
     ; you will find other functions as expected - length, reverse, etc.
 
@@ -66,11 +66,11 @@ Mutator functions: with exclamation mark, e.g. set!
     (define (plus10 x) (+ x 10))            ; a shortcut to defining a named function
     (plus10 5) ==> 15
 
-    ;; Cond is a general conditional - returns the value associated with the first true expression, or the 'else' clause
+    ;; Cond is a general conditional - returns the value associated with the first true expression
     (cond 
       ((eq? 'foo 'bar) 'hello)
       ((= 10 20) 'goodbye)
-      (else 'sorry))            ==> sorry
+      (else 'sorry))            ==> sorry   ; uses else value if others aren't true
 
     ;; Let is used to declare/use temporary variables within the scope of the let statement
     (let
