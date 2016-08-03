@@ -3,36 +3,36 @@ Scheme Quick Reference
 
 ### Atoms
 
-    -3 ; integer literal
-    4.3 ; floating point literal
-    3/4 ; rational literal
-    #t ; boolean literal, true
-    #f ; boolean literal, false
+    -3      ; integer literal
+    4.3     ; floating point literal
+    3/4     ; rational literal
+    #t      ; boolean literal, true
+    #f      ; boolean literal, false
     "hello" ; string literal
     'winter ; symbol
 
 ### Lists
 
-    ’(3 4) ; a two element list
-    ’((4 3) 3) ; lists can be nested
-    ’() ; empty list
+    ’(3 4)             ; a two element list
+    ’((4 3) 3)         ; lists can be nested
+    ’()                ; empty list
     ’("hi" 43 ("joe")) ; lists can be heterogeneous
 
 **Note**: the quote ' prevents the expression being evaluated - without it, the first argument is assumed to be a function.
 
 ### Function Application
 
-    (+ 1 2 3) ==> 6
+    (+ 1 2 3)                   ==> 6
     (string-append "hi " "mum") ==> "hi mum"
-    ((if (> 1 2) + -) 4 3) ==> 1 ; as long as the first element evaluates to a function, you're good
+    ((if (> 1 2) + -) 4 3)      ==> 1        ; first element evaluates to a function
 
 ### Comparison Functions
 
-    (= 2 3) ==> #f ; are all the integer operands equal?
+    (= 2 3)            ==> #f ; are all the integer operands equal?
     (eqv? "abs" "abs") ==> #t ; are all the operands equal?
-    (< 2 3) ==> #t ; less than (also >, <=, >=, etc.)
-    (or #f #t) ==> #t ; or (also not, and, etc.)
-    (integer? 2) ==> #t ; are all the operands integers?
+    (< 2 3)            ==> #t ; less than (also >, <=, >=, etc.)
+    (or #f #t)         ==> #t ; or (also not, and, etc.)
+    (integer? 2)       ==> #t ; are all the operands integers?
 
 ### List Functions
 
