@@ -9,6 +9,7 @@ Scheme Quick Reference
 #t ; boolean literal, true
 #f ; boolean literal, false
 "hello" ; string literal
+'winter ; symbol
 
 ### Lists
 
@@ -17,13 +18,31 @@ Scheme Quick Reference
 ’() ; empty list
 ’("hi" 43 ("joe")) ; lists can be heterogeneous
 
-**Note**: the quote ' prevents the expression being evaluated - without it, the first argument is assumed to be a function.  You can also create a list using the list function:
-(list 1 2 (+ 1 2)) -> '(1 2 3)
+**Note**: the quote ' prevents the expression being evaluated - without it, the first argument is assumed to be a function.
 
 ### Function Application
 
-(+ 1 2 3) -> 6
-(string-append "hi " "mum") -> "hi mum"
+(+ 1 2 3) ==> 6
+(string-append "hi " "mum") ==> "hi mum"
+
+### Comparison Functions
+
+(= 2 3) ==> #f ; are all the integer operands equal?
+(eqv? "abs" "abs") ==> #t ; are all the operands equal?
+(< 2 3) ==> #t ; less than (also >, <=, >=, etc.)
+(or #f #t) ==> #t ; or (also not, and, etc.)
+(integer? 2) ==> #t ; are all the operands integers?
+
+### List Functions
+
+’(a b) ==> '(a b) ; quote suspends evaluation of the list
+(car ’(a b)) ==> a ; get head of list (contents of address reg)
+(cdr ’(a b)) ==> '(b) ; get rest of list (contents of decrement reg)
+(cons "one" '(2 3)) ==> ("one" 2 3) ; put element on head of list
+(length ’(a b c)) ==> 3 ; what is the length of a list?
+(append ’(a b) ’(y z)) ==> '(a b y z) ; append one list to another
+(reverse ’(a b c)) ==> '(c b a) ; reverse a list
+(null? ’()) ==> #t ; is the list empty?
 
 ### Special Forms
 
