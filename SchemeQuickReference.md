@@ -5,11 +5,9 @@ Scheme Quick Reference
 
     -3      ; integer literal
     4.3     ; floating point literal
-    3/4     ; rational literal
     #t      ; boolean literal, true
     #f      ; boolean literal, false
     "hello" ; string literal
-    'winter ; symbol
 
     ;; There are several other types available
 
@@ -58,7 +56,7 @@ Mutator functions: with exclamation mark, e.g. set!
     (define x 10)
     x                          ==> 10
 
-    ; you *can* change a variable once set, but it's not realy the Scheme way
+    ; you *can* change a variable once set, but it's not really the Scheme way
     (set! x 20) 
     x                          ==> 20
 
@@ -66,7 +64,7 @@ Mutator functions: with exclamation mark, e.g. set!
     (lambda (x) (+ x 10)                    ; an anonymous function
     (define plus10 (lambda (x) (+ x 10)))   ; we've named the function now
     (define (plus10 x) (+ x 10))            ; a shortcut to defining a named function
-    (plus10 5) ==> 15
+    (plus10 5)                 ==> 15
 
     ;; Cond is a general conditional - returns the value associated with the first true expression
     (cond 
