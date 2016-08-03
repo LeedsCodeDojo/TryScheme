@@ -44,21 +44,16 @@ Scheme Quick Reference
 (reverse ’(a b c)) ==> '(c b a) ; reverse a list
 (null? ’()) ==> #t ; is the list empty?
 
-### Special Forms
+### Defining Variables & Functions
 
-;; Define is used to define new names.  Names may refer to any value
-;; (which may be data or a function)
 (define x 10)
-(define double (lambda (x) (* x 2)))
-
-;; Quote is used to "quote" literal data (symbols or lists)
-(quote hello)           => hello
-(quote (1 2 3))         => (1 2 3)
-'(1 2 foo bar)          => (1 2 foo bar)  ; the tick-mark ' is syntactic sugar
+x ==> 10
+(set! x 20) ; you can change a variable once set, but it's not an idiomatic thing to do
 
 ;; Lambda is used to generate new functions
 (lambda (x) (+ x 10)                    ; an anonymous function
 (define plus10 (lambda (x) (+ x 10)))   ; we've named the function now
+
 
 ;; Cond is a general conditional
 (cond 
