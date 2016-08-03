@@ -11,6 +11,8 @@ Scheme Quick Reference
     "hello" ; string literal
     'winter ; symbol
 
+    ;; There are several other types available
+
 ### Lists
 
     ’(3 4)             ; a two element list
