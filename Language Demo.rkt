@@ -1,30 +1,17 @@
 ; Scheme Language Demo
 
-; Atoms & Lists (& S-Expressions?)
-
-; Atoms - data types, #t & #f
+; Atoms & Lists
 
 ; Lists - data vs function applications
 
 ; Functions - prefix notation
 
-; Testing for equality (eq?, =, atom?, number?) (predicates)
-
-; Lists - recursion, car & cdr, cons.  (car & cdr don't work on empty lists).
-
-; Parentheses
+; Lists - car & cdr, cons.  (car & cdr don't work on empty lists).
 
 ; Conditionals - Conf & If (demo - fizzbuzz)
 
-; Recursion (demo - fibonnaci)
+; Dr Racket - REPL, unit tests, parenthesis matching, etc.
 
-; Dynamic typing
-
-; Define-ing values
-
-; Lambdas
-
-; First-class functions
-
-; Macros
-
+(cond
+  ((= 1 2) "hi")
+  (else "bye"))
