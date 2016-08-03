@@ -26,7 +26,7 @@ Scheme Quick Reference
     (string-append "hi " "mum") ==> "hi mum"
     ((if (> 1 2) + -) 4 3)      ==> 1        ; first element evaluates to a function
 
-### Comparison Functions
+### Comparison & Logic Functions
 
     (= 2 3)            ==> #f ; are all the integer operands equal?
     (eqv? "abs" "abs") ==> #t ; are all the operands equal?
