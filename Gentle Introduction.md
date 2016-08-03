@@ -1,17 +1,7 @@
 Scheme - A Gentle Introduciton
 ==============================
 
-; Basics - add some numbers etc
-
-; check for equality of some stuff
-
-; conditionals - if & cond
-
-; make 'double' function or similar
-
-; try car, cdr, cons
-
-; make function to recursively add numbers in a list
+This set of exercises aims to guide you through the basics of coding in Scheme.  If you already know parts or are finding it easy, feel free to skip ahead.
 
 ### 1 Atoms
 
@@ -43,6 +33,8 @@ Function application takes the form (+ 1 2), with + being a function.
 
 3.4 Calculate the following with scheme: 2 + 4 * 5 - 3 (which should equal 19).
 
+3.5 what's the biggest number Scheme will handle?  (expt, the exponent (power) function, can be useful here).
+
 ### 4 Comparison
 
 Using the built-in comparison functions, see if:
@@ -53,58 +45,59 @@ Using the built-in comparison functions, see if:
 
 4.3 10 is greater than -5
 
-List Functions
+### 5 Lists
 
-’(a b)                   ==> '(a b)      ; quote suspends evaluation of the list
-(car ’(a b))             ==> a           ; get head of list (contents of address reg)
-(cdr ’(a b))             ==> '(b)        ; get rest of list (contents of decrement reg)
-(cons "one" '(2 3))      ==> ("one" 2 3) ; put element on head of list
-(append ’(a b) ’(y z))   ==> '(a b y z)  ; append one list to another
-(null? ’())              ==> #t          ; is the list empty?
+The main functions for working with lists are car, cdr and cons.
 
-; you will find other functions as expected - length, reverse, etc.
-Naming Conventions
+5.1 What is the car of '(1 2 3)?
 
-General names: lisp-case, e.g. child-node Predicate functions: with question mark, e.g. even? Mutator functions: with exclamation mark, e.g. set!
+5.2 What is the cdr of '(1 2 3)?
 
-Defining Variables & Functions
+5.3 What is the cdr of '(1)?
 
-(define x 10)
-x                          ==> 10
+5.4 Cay you find the car of an empty list? '()
 
-; you *can* change a variable once set, but it's not really the Scheme way
-(set! x 20) 
+5.5 Extend the list '(2 3 4) by consing a 1 onto the front
 
-;; Lambda is used to generate new functions
-(lambda (x) (+ x 10)                    ; an anonymous function
-(define plus10 (lambda (x) (+ x 10)))   ; we've named the function now
-(define (plus10 x) (+ x 10))            ; a shortcut to defining a named function
-(plus10 5)                 ==> 15
+5.6 Build the list '(1 2 3) from scratch using cons.  Hint: You will need to start with an empty list, '()
 
-;; Cond is a general conditional - returns the value associated with the first true expression
-(cond 
-  ((eq? 'foo 'bar) 'hello)
-  ((= 10 20) 'goodbye)
-  (else 'sorry))            ==> sorry   ; uses else value if others aren't true
+### 6 Variables
 
-;; Let is used to declare/use temporary variables within the scope of the let statement
-(let
-  ((x 10)
-   (y 20))
-  (+ x y))                  ==> 30
-Recursion
+Variables can be defined like this: (define x 10)  and changed like this: (set! x 5)
 
-;; List length
-(define (length a-list)
-    (cond ((null? a-list) 0)
-      (else (+ 1 (length (cdr a-list))))))
+6.1 Define two variables, x and y, and multiply them together.
 
-(length '(a b c))            ==> 3
-Higher order functions
+6.2 Change one, add add them together again.
 
-;; takes a function and applies it to every element of a list
-(define (map function a-list)
-    (cond ((null? a-list) '())
-      (else (cons (function (car a-list)) (map function (cdr a-list))))))
+### 7 Functions
 
-(map even? '(1 2 3 4))        ==> (#f #t #f #t)
+(See [Quick Reference](https://github.com/LeedsCodeDojo/TryScheme/blob/master/SchemeQuickReference.md) for examples)
+
+7.1 Define a function 'double' that multiplies an argument by two, using the (define (lambda .. syntax
+
+7.2 Define a function 'square' that multiplies an argument by itself, using the (define (square .. syntax
+
+### 8 Conditionals
+
+(See [Quick Reference](https://github.com/LeedsCodeDojo/TryScheme/blob/master/SchemeQuickReference.md) for examples)
+
+8.1 Write an expression using the 'if' statement which evaluates to "yes" if 1=1, otherwise "no"
+
+8.2 Write a num->text function which makes use of the 'cond' statement to convert a passed numeric argument  between 1 and 5 to its textual equivalent (e.g. (num->text 2) ==> "two").  If it is not a number between 1 and 5, it should evaluate to "error".
+
+### 9 Recursion
+
+9.1 Write a recursive function that adds a list of numbers, e.g.
+    (add '(1 2 3)) ==> 6
+
+9.2 Write a recursive function that replaces an item in a list with an alternative, e.g.
+    (replace "kiss" "x" '("lots" "of" "love" "kiss" "kiss" "kiss") ==> '("lots" "of" "love" "x" "x" "x")
+
+### 10 Higher order functions
+
+10.1 Write a map function that applies a given function to every argument in a list and returns it.
+    e.g. (map even? '(1 2 3 4))        ==> (#f #t #f #t)
+    
+10.2 Try using it with your square and double functions
+
+10.3 Try using it with an anonymous lambda
