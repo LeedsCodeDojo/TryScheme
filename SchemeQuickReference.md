@@ -1,6 +1,30 @@
 Scheme Quick Reference
 ======================
 
+### Atoms
+
+-3 ; integer literal
+4.3 ; floating point literal
+3/4 ; rational literal
+#t ; boolean literal, true
+#f ; boolean literal, false
+"hello" ; string literal
+
+### Lists
+
+’(3 4) ; a two element list
+’((4 3) 3) ; lists can be nested
+’() ; empty list
+’("hi" 43 ("joe")) ; lists can be heterogeneous
+
+**Note**: the quote ' prevents the expression being evaluated - without it, the first argument is assumed to be a function.  You can also create a list using the list function:
+(list 1 2 (+ 1 2)) -> '(1 2 3)
+
+### Function Application
+
+(+ 1 2 3) -> 6
+(string-append "hi " "mum") -> "hi mum"
+
 ### Special Forms
 
 ;; Define is used to define new names.  Names may refer to any value
