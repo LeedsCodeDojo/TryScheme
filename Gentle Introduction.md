@@ -75,7 +75,7 @@ Variables can be defined like this: (define x 10)  and changed like this: (set! 
 
 7.1 Define a function 'double' that multiplies an argument by two, using the (define (lambda .. syntax
 
-7.2 Define a function 'square' that multiplies an argument by itself, using the (define (square .. syntax
+7.2 Define you own 'even?' function that returns #t if the argument is even.  Hint: You might need the modulo function.
 
 ### 8 Conditionals
 
@@ -95,9 +95,7 @@ Variables can be defined like this: (define x 10)  and changed like this: (set! 
 
 ### 10 Higher order functions
 
-10.1 Write a map function that applies a given function to every argument in a list and returns it.
-    e.g. (map even? '(1 2 3 4))        ==> (#f #t #f #t)
+10.1 Write a filter function that uses a predicate to keep only items of a list which match it.
+    e.g. (filter even? '(1 2 3 4))        ==> '(2 4)
     
-10.2 Try using it with your square and double functions
-
-10.3 Try using it with an anonymous lambda
+10.2 Try using it with your even? function, and with an anonymous lambda.
