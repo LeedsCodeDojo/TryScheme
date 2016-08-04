@@ -11,7 +11,3 @@
 ; Conditionals - Conf & If (demo - fizzbuzz)
 
 ; Dr Racket - REPL, unit tests, parenthesis matching, etc.
-
-(cond
-  ((= 1 2) "hi")
-  (else "bye"))
